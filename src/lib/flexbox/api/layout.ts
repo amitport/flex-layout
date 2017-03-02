@@ -33,15 +33,14 @@ export const LAYOUT_VALUES = ['row', 'column', 'row-reverse', 'column-reverse'];
  */
 @Directive({selector: `
   [fxLayout],
-  [fxLayout.xs],
-  [fxLayout.gt-xs],
-  [fxLayout.sm],
-  [fxLayout.gt-sm],
-  [fxLayout.md],
-  [fxLayout.gt-md],
-  [fxLayout.lg],
-  [fxLayout.gt-lg],
-  [fxLayout.xl]
+  [fxLayout.xs],  [fxLayout.gt-xs],
+  [fxLayout.sm],  [fxLayout.gt-sm],
+  [fxLayout.md],  [fxLayout.gt-md],
+  [fxLayout.lg],  [fxLayout.gt-lg],
+  [fxLayout.xl],
+  [fxLayout.handset], [fxLayout.handset.landscape], [fxLayout.handset.portrait],
+  [fxLayout.tablet],  [fxLayout.tablet.landscape],  [fxLayout.tablet.portrait],
+  [fxLayout.web],     [fxLayout.web.landscape],     [fxLayout.web.portrait]  
 `})
 export class LayoutDirective extends BaseFxDirective implements OnInit, OnChanges, OnDestroy {
 
@@ -68,6 +67,18 @@ export class LayoutDirective extends BaseFxDirective implements OnInit, OnChange
   @Input('fxLayout.gt-lg') set layoutGtLg(val) { this._cacheInput('layoutGtLg', val); };
   @Input('fxLayout.xl')    set layoutXl(val)   { this._cacheInput('layoutXl', val); };
 
+  /* tslint:disable */
+  @Input('fxLayout.handset')           set handset(val)           { this._cacheInput('layoutHandset', val); };
+  @Input('fxLayout.handset.landscape') set handsetLandscape(val)  { this._cacheInput('layoutHandsetLandscape', val) };
+  @Input('fxLayout.handset.portrait')  set handsetPortrait(val)   { this._cacheInput('layoutHandsetPortrait', val); };
+  @Input('fxLayout.tablet')            set tablet(val)            { this._cacheInput('layoutTablet', val); };
+  @Input('fxLayout.tablet.landscape')  set tabletLandscape(val)   { this._cacheInput('layoutTabletLandscape', val); };
+  @Input('fxLayout.tablet.portrait')   set tabletPortrait(val)    { this._cacheInput('layoutTabletPortrait', val); };
+  @Input('fxLayout.web')               set web(val)               { this._cacheInput('layoutWeb', val); };
+  @Input('fxLayout.web.landscape')     set webLandscape(val)      { this._cacheInput('layoutWebLandscape', val); };
+  @Input('fxLayout.web.portrait')      set webPortrait(val)       { this._cacheInput('layoutWebPortrait', val); };
+
+  /* tslint:enable */
   /**
    *
    */

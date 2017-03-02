@@ -226,5 +226,12 @@ export class MockMediaQueryList implements MediaQueryList {
   }
 }
 
+/**
+ * Pre-configured provider for MockMatchMedia
+ */
+export const MockMatchMediaProvider = {  // tslint:disable-line:variable-name
+  provide: MatchMedia,
+  useClass: MockMatchMedia
+};
 
 

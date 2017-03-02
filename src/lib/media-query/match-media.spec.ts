@@ -16,7 +16,7 @@ import {TestBed, inject, async} from '@angular/core/testing';
 import {MediaChange} from './media-change';
 import {BreakPoint} from './breakpoints/break-point';
 import {MockMatchMedia} from './mock/mock-match-media';
-import {BreakPointsProvider} from './breakpoints/break-points';
+import {BreakPointsProvider} from './breakpoints/break-points-provider';
 import {BreakPointRegistry} from './breakpoints/break-point-registry';
 import {MatchMedia} from './match-media';
 import {ObservableMedia, ObservableMediaProvider} from './observable-media-service';

@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 
 import {TestBed, inject} from '@angular/core/testing';
 
-import {BreakPointsProvider} from '../../media-query/breakpoints/break-points';
+import {BreakPointsProvider} from '../../media-query/breakpoints/break-points-provider';
 import {BreakPointRegistry} from '../../media-query/breakpoints/break-point-registry';
 
 import {MockMatchMedia} from '../../media-query/mock/mock-match-media';

@@ -41,15 +41,14 @@ export type FlexBasisAlias = 'grow' | 'initial' | 'auto' | 'none' | 'nogrow' | '
  */
 @Directive({selector: `
   [fxFlex],
-  [fxFlex.xs],
-  [fxFlex.gt-xs],
-  [fxFlex.sm],
-  [fxFlex.gt-sm],
-  [fxFlex.md],
-  [fxFlex.gt-md],
-  [fxFlex.lg],
-  [fxFlex.gt-lg],
-  [fxFlex.xl]
+  [fxFlex.xs],  [fxFlex.gt-xs],
+  [fxFlex.sm],  [fxFlex.gt-sm],
+  [fxFlex.md],  [fxFlex.gt-md],
+  [fxFlex.lg],  [fxFlex.gt-lg],
+  [fxFlex.xl],
+  [fxFlex.handset], [fxFlex.handset.landscape], [fxFlex.handset.portrait],
+  [fxFlex.tablet],  [fxFlex.tablet.landscape],  [fxFlex.tablet.portrait],
+  [fxFlex.web],     [fxFlex.web.landscape],     [fxFlex.web.portrait]    
 `
 })
 export class FlexDirective extends BaseFxDirective implements OnInit, OnChanges, OnDestroy {
@@ -63,55 +62,32 @@ export class FlexDirective extends BaseFxDirective implements OnInit, OnChanges,
    */
   protected _layoutWatcher: Subscription;
 
-  @Input('fxFlex')       set flex(val) {
-    this._cacheInput("flex", val);
-  }
+  @Input('fxShrink')     set shrink(val)    { this._cacheInput("shrink", val); };
+  @Input('fxGrow')       set grow(val)      { this._cacheInput("grow", val); };
 
-  @Input('fxShrink')     set shrink(val) {
-    this._cacheInput("shrink", val);
-  }
+  @Input('fxFlex')       set flex(val)      { this._cacheInput("flex", val); };
+  @Input('fxFlex.xs')    set flexXs(val)    { this._cacheInput('flexXs', val); };
+  @Input('fxFlex.gt-xs') set flexGtXs(val)  { this._cacheInput('flexGtXs', val); };
+  @Input('fxFlex.sm')    set flexSm(val)    { this._cacheInput('flexSm', val); };
+  @Input('fxFlex.gt-sm') set flexGtSm(val)  { this._cacheInput('flexGtSm', val); };
+  @Input('fxFlex.md')    set flexMd(val)    { this._cacheInput('flexMd', val); };
+  @Input('fxFlex.gt-md') set flexGtMd(val)  { this._cacheInput('flexGtMd', val); };
+  @Input('fxFlex.lg')    set flexLg(val)    { this._cacheInput('flexLg', val); };
+  @Input('fxFlex.gt-lg') set flexGtLg(val)  { this._cacheInput('flexGtLg', val); };
+  @Input('fxFlex.xl')    set flexXl(val)    { this._cacheInput('flexXl', val); };
 
-  @Input('fxGrow')       set grow(val) {
-    this._cacheInput("grow", val);
-  }
+  /* tslint:disable */
+  @Input('fxFlex.handset')           set handset(val)           { this._cacheInput('flexHandset', val); };
+  @Input('fxFlex.handset.landscape') set handsetLandscape(val)  { this._cacheInput('flexHandsetLandscape', val) };
+  @Input('fxFlex.handset.portrait')  set handsetPortrait(val)   { this._cacheInput('flexHandsetPortrait', val); };
+  @Input('fxFlex.tablet')            set tablet(val)            { this._cacheInput('flexTablet', val); };
+  @Input('fxFlex.tablet.landscape')  set tabletLandscape(val)   { this._cacheInput('flexTabletLandscape', val); };
+  @Input('fxFlex.tablet.portrait')   set tabletPortrait(val)    { this._cacheInput('flexTabletPortrait', val); };
+  @Input('fxFlex.web')               set web(val)               { this._cacheInput('flexWeb', val); };
+  @Input('fxFlex.web.landscape')     set webLandscape(val)      { this._cacheInput('flexWebLandscape', val); };
+  @Input('fxFlex.web.portrait')      set webPortrait(val)       { this._cacheInput('flexWebPortrait', val); };
 
-  @Input('fxFlex.xs')    set flexXs(val) {
-    this._cacheInput('flexXs', val);
-  }
-
-  @Input('fxFlex.gt-xs') set flexGtXs(val) {
-    this._cacheInput('flexGtXs', val);
-  };
-
-  @Input('fxFlex.sm')    set flexSm(val) {
-    this._cacheInput('flexSm', val);
-  };
-
-  @Input('fxFlex.gt-sm') set flexGtSm(val) {
-    this._cacheInput('flexGtSm', val);
-  };
-
-  @Input('fxFlex.md')    set flexMd(val) {
-    this._cacheInput('flexMd', val);
-  };
-
-  @Input('fxFlex.gt-md') set flexGtMd(val) {
-    this._cacheInput('flexGtMd', val);
-  };
-
-  @Input('fxFlex.lg')    set flexLg(val) {
-    this._cacheInput('flexLg', val);
-  };
-
-  @Input('fxFlex.gt-lg') set flexGtLg(val) {
-    this._cacheInput('flexGtLg', val);
-  };
-
-  @Input('fxFlex.xl')    set flexXl(val) {
-    this._cacheInput('flexXl', val);
-  };
-
-
+  /* tslint:enable */
   // Explicitly @SkipSelf on LayoutDirective and LayoutWrapDirective because we want the
   // parent flex container for this flex item.
   constructor(monitor: MediaMonitor,
